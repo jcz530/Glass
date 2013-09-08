@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Glass by jcz530</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Glass</h1>
+          <h2>Android library. Allows you to easily have a parallax background.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jcz530/Glass/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jcz530/Glass/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jcz530/Glass" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="glass" class="anchor" href="#glass"><span class="octicon octicon-link"></span></a>Glass</h1>
+
+<h2>
+<a name="android-parallax-background-library" class="anchor" href="#android-parallax-background-library"><span class="octicon octicon-link"></span></a>Android Parallax Background Library.</h2>
+
+<p>This is an Android library that allows you to easily create a parallax background for your Android app. This is a background that moves independently of your content and moves proportionately to the physical phone's gyration. </p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<h4>
+<a name="import-glass" class="anchor" href="#import-glass"><span class="octicon octicon-link"></span></a>Import Glass</h4>
+
+<p>Glass is a library project and should be added to your workspace in the same way you would add any other library project.</p>
+
+<h4>
+<a name="defining-your-layout" class="anchor" href="#defining-your-layout"><span class="octicon octicon-link"></span></a>Defining Your Layout</h4>
+
+<p>In order to user Glass, you need to be using a FrameLayout as your top layout element. In most situations you can just surround your existing layout with a FrameLayout.</p>
+
+<pre><code>&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/glass"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" &gt;
+
+  YOUR REGUALAR LAYOUT GOES IN HERE
+
+&lt;/FrameLayout
+
+</code></pre>
+
+<h4>
+<a name="java" class="anchor" href="#java"><span class="octicon octicon-link"></span></a>Java</h4>
+
+<p>In your onCreate</p>
+
+<div class="highlight"><pre>    <span class="kd">private</span> <span class="n">Glass</span> <span class="n">g</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">FrameLayout</span> <span class="n">fl</span> <span class="o">=</span> <span class="o">(</span><span class="n">FrameLayout</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">glass</span><span class="o">);</span>
+        <span class="n">Drawable</span> <span class="n">my_background</span> <span class="o">=</span> <span class="o">(</span><span class="n">Drawable</span><span class="o">)</span> <span class="n">getResources</span><span class="o">().</span><span class="na">getDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">my_bg</span><span class="o">);</span>
+        <span class="n">Double</span> <span class="n">scale_img</span> <span class="o">=</span> <span class="mf">4.0</span><span class="o">;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Glass</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>  <span class="n">fl</span><span class="o">,</span> <span class="n">my_background</span><span class="o">,</span> <span class="n">scale_img</span><span class="o">);</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">dimLights</span><span class="o">();</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+</pre></div>
+
+<p>Make sure you start and stop Glass with your app in onPause and onResume.</p>
+
+<div class="highlight"><pre>    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+</pre></div>
+        </section>
+
+        <footer>
+          Glass is maintained by <a href="https://github.com/jcz530">jcz530</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>

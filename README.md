@@ -1,4 +1,7 @@
 Glass
 =====
+Android Parallax Background Library.
+====================================
+====================================
 
-Android library. Allows you to easily have a parallax background.
+This is an Android library that allows you to easily create a parallax background for your Android app. This is a background that moves independently of your content and moves proportionately to the physical phone's gyration. 

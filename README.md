@@ -29,12 +29,20 @@ In order to user Glass, you need to be using a FrameLayout as your top layout el
 ####Java
 In your onCreate
 ```Java
+	private Glass g;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
 		FrameLayout fl = (FrameLayout) findViewById(R.id.glass);
 		Drawable my_background = (Drawable) getResources().getDrawable(R.drawable.my_bg);
 		Double scale_img = 4.0;
 		g = new Glass(this,  fl, my_background, scale_img);
 		g.dimLights();
 		g.start();
+	}
 ```
 
 Make sure you start and stop Glass with your app in onPause and onResume.

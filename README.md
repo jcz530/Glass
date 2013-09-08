@@ -20,7 +20,7 @@ In order to user Glass, you need to be using a FrameLayout as your top layout el
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-  YOUR REGUAL LAYOUT GOES IN HERE
+  YOUR REGUALAR LAYOUT GOES IN HERE
 
 </FrameLayout
 
